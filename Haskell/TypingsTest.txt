@@ -1,0 +1,43 @@
+> typecheck ctx2 term1
+Just Bool
+
+> typecheck ctx2 abst1
+Just (Fun Bool Bool)
+
+> typecheck ctx2 appi1
+Just Bool
+
+----------------------------------------------------------------
+Extended Calculus (Part 1C)
+
+> extTypecheck ectx1 rec1
+Just (RecordType [("L1",ExtNat),("L2",ExtBool)])
+
+> extTypecheck ectx1 rec2
+Nothing
+Becuase "z" is not in typing context
+
+> extTypecheck ectx1 rec1
+Just (RecordType [("L1",ExtNat),("L2",ExtBool)])
+
+t1 and t2 are RecordType, can see their values in the console
+> checkSubtype t1 t2
+True
+
+> checkSubtype t2 t1
+False
+
+a and b are arrow types, can see their values in the console
+> checkSubtype a b
+False
+
+> checkSubtype b a
+True
+
+a1 and a2 are application terms, these typechecks involve subtyping check also
+can see the values of these in console, just type a1 or a2
+> extTypecheck ectx1 a1
+Nothing
+
+> extTypecheck ectx1 a2
+Just (RecordType [("L3",ExtNat)])
