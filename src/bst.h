@@ -6,9 +6,12 @@ class BST {
     public:
         NODE* ROOT;
         BST(NODE* N);
+        // crud operations
         NODE* insert (NODE* R, double key);
-        void inorder (NODE* N);
         NODE* mirror(NODE* node);
+        // traversal
+        void inorder (NODE* N);
+        void postorder (NODE* N);
 };
 
 BST::BST (NODE * N) {
@@ -41,6 +44,17 @@ void BST::inorder (NODE* N) {
         cout << N->value << " ";
         if (N->right != NULL)
             inorder(N->right);
+    }
+    return;
+}
+
+void BST::postorder (NODE* N) {
+    if (N != NULL) {
+        if (N->left != NULL)
+            postorder(N->left);
+        if (N->right != NULL)
+            postorder(N->right);
+        cout << N->value << " ";
     }
     return;
 }
