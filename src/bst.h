@@ -8,6 +8,7 @@ class BST {
         BST(NODE* N);
         NODE* insert (NODE* R, double key);
         void inorder (NODE* N);
+        NODE* mirror(NODE* node);
 };
 
 BST::BST (NODE * N) {
@@ -42,4 +43,13 @@ void BST::inorder (NODE* N) {
             inorder(N->right);
     }
     return;
+}
+
+NODE* BST::mirror(NODE* node) {
+    if (node != NULL) {
+        NODE* temp = node->left;
+        node->left = mirror(node->right);
+        node->right = mirror(temp);
+    }
+    return node;
 }

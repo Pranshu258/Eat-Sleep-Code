@@ -1,6 +1,7 @@
 #include "../src/header.h"
 #include "../src/bst.h"
 
+// Test for BST Implementation
 void bsttest() {
     int N;
     cout << "Enter the number of nodes: ";
@@ -13,6 +14,9 @@ void bsttest() {
         T.ROOT = T.insert(T.ROOT, v);
         //cout << "inserted " << v << endl;
     }
+    T.inorder(T.ROOT);
+    cout << endl;
+    T.ROOT = T.mirror(T.ROOT);
     T.inorder(T.ROOT);
     cout << endl;
 }
