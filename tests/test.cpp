@@ -1,6 +1,7 @@
 #include "../src/header.h"
 #include "../src/bst.h"
 #include "../src/random.h"
+#include "../src/graph.h"
 
 // Test for BST Implementation
 void bsttest() {
