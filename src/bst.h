@@ -2,6 +2,12 @@
 // BINARY SEARCH TREE
 // Author: Pranshu Gupta
 
+struct NODE {
+    double value;
+    NODE* left;
+    NODE* right;
+};
+
 class BST {
     public:
         NODE* ROOT;

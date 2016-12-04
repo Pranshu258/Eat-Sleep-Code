@@ -1,9 +1,8 @@
 #include <iostream>
+#include <random>
+#include <chrono>
+#include <list>
+
 
 using namespace std;
-
-struct NODE {
-    double value;
-    NODE* left;
-    NODE* right;
-};
+using namespace std::chrono;
