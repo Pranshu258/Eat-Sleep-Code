@@ -18,6 +18,7 @@ class BST {
         // traversal
         void inorder (NODE* N);
         void postorder (NODE* N);
+        void preorder (NODE* N);
 };
 
 BST::BST (NODE * N) {
@@ -61,6 +62,17 @@ void BST::postorder (NODE* N) {
         if (N->right != NULL)
             postorder(N->right);
         cout << N->value << " ";
+    }
+    return;
+}
+
+void BST::preorder (NODE* N) {
+    if (N != NULL) {
+        cout << N->value << " ";
+        if (N->left != NULL)
+            preorder(N->left);
+        if (N->right != NULL)
+            preorder(N->right);
     }
     return;
 }

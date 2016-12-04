@@ -14,8 +14,8 @@ void bsttest() {
     }
     T.inorder(T.ROOT);
     cout << endl;
-    // T.postorder(T.ROOT);
-    // cout << endl;
+    T.preorder(T.ROOT);
+    cout << endl;
     // T.ROOT = T.mirror(T.ROOT);
     // T.inorder(T.ROOT);
     // cout << endl;
