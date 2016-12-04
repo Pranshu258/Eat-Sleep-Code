@@ -14,6 +14,7 @@ class BST {
         BST(NODE* N);
         // crud operations
         NODE* insert (NODE* R, double key);
+        NODE* search(NODE* R, double key);
         NODE* mirror(NODE* node);
         // traversal
         void inorder (NODE* N);
@@ -42,6 +43,20 @@ NODE* BST::insert (NODE* R, double key) {
     }
 
     return R;
+}
+
+NODE* BST::search(NODE* R, double key) {
+    if (R != NULL) {
+        if (R->value == key) {      
+            return R;
+        } else if (R->value < key) {
+            return search(R->right, key);
+        } else {
+            return search(R->left, key);
+        } 
+    } else {
+        return R;
+    } 
 }
 
 void BST::inorder (NODE* N) {
@@ -85,3 +100,4 @@ NODE* BST::mirror(NODE* node) {
     }
     return node;
 }
+
