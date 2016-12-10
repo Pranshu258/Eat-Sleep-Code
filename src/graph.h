@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
-// GRAPH
+// GRAPH ALGORITMS
 // Author: Pranshu Gupta
+// Adjacency List based implementation
 
 struct VERTEX {
     double value;
@@ -11,5 +12,4 @@ struct VERTEX {
 class GRAPH {
     public:
         list<VERTEX*> vertices;
-        
-}
+};

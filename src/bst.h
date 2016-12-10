@@ -13,6 +13,8 @@ class BST {
         NODE* ROOT;
         BST(NODE* N);
         // crud operations
+        NODE* max(NODE* R);
+        NODE* min(NODE* R);
         NODE* insert (NODE* R, double key);
         NODE* search(NODE* R, double key);
         NODE* mirror(NODE* node);
@@ -57,6 +59,22 @@ NODE* BST::search(NODE* R, double key) {
     } else {
         return R;
     } 
+}
+
+NODE* BST::max(NODE* R) {
+    NODE* n = R;
+    while (n->right != NULL) {
+        n = n->right;
+    }
+    return n;
+}
+
+NODE* BST::min(NODE* R) {
+    NODE* n = R;
+    while (n->left != NULL) {
+        n = n->left;
+    }
+    return n;
 }
 
 void BST::inorder (NODE* N) {

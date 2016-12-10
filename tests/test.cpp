@@ -15,16 +15,17 @@ void bsttest() {
     }
     T.inorder(T.ROOT);
     cout << endl;
-    T.preorder(T.ROOT);
-    cout << endl;
+    // T.preorder(T.ROOT);
+    // cout << endl;
     NODE* node = T.search(T.ROOT, 10);
     if (node != NULL)
         cout << "10 found at " << node << endl;
     else
-        cout << "10 not found" << endl; 
+        cout << "10 not found" << endl;
+    cout << (T.max(T.ROOT))->value << endl; 
     // T.ROOT = T.mirror(T.ROOT);
-    // T.inorder(T.ROOT);
-    // cout << endl;
+    T.inorder(T.ROOT);
+    cout << endl;
 }
 
 int main () {
