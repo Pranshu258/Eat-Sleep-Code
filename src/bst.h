@@ -6,6 +6,7 @@ struct NODE {
     double value;
     NODE* left;
     NODE* right;
+    NODE* parent;
 };
 
 class BST {
@@ -15,7 +16,9 @@ class BST {
         // crud operations
         NODE* max(NODE* R);
         NODE* min(NODE* R);
-        NODE* insert (NODE* R, double key);
+        NODE* predecessor (NODE* R);
+        NODE* successor (NODE* R);
+        NODE* insert (NODE* R, NODE* P, double key);
         NODE* search(NODE* R, double key);
         NODE* mirror(NODE* node);
         // traversal
@@ -28,20 +31,21 @@ BST::BST (NODE * N) {
     ROOT = N; 
 }
 
-NODE* BST::insert (NODE* R, double key) {    
+NODE* BST::insert (NODE* R, NODE* P, double key) {    
     if (R == NULL) {
         // create and return the node here
         NODE* node = new NODE;
         node->value = key;
         node->left = NULL;
-        node->right = NULL;        
+        node->right = NULL;
+        node->parent = P;        
         return node;
     }
 
     if (R->value <= key) {
-        R->right = insert(R->right, key);
+        R->right = insert(R->right, R, key);
     } else {
-        R->left = insert(R->left, key);
+        R->left = insert(R->left, R, key);
     }
 
     return R;
@@ -61,7 +65,7 @@ NODE* BST::search(NODE* R, double key) {
     } 
 }
 
-NODE* BST::max(NODE* R) {
+NODE* BST::max (NODE* R) {
     NODE* n = R;
     while (n->right != NULL) {
         n = n->right;
@@ -69,12 +73,52 @@ NODE* BST::max(NODE* R) {
     return n;
 }
 
-NODE* BST::min(NODE* R) {
+NODE* BST::min (NODE* R) {
     NODE* n = R;
     while (n->left != NULL) {
         n = n->left;
     }
     return n;
+}
+
+NODE* BST::predecessor (NODE* R) {
+    NODE* n = R;
+    if (n == NULL) {
+        return NULL;
+    }
+    if (n->left != NULL) {
+        return max(n->left);
+    } else {
+        if (n->parent != NULL) {
+            while (n != (n->parent)->right) {
+                n = n->parent;
+                if (n->parent == NULL) {
+                    break;
+                }
+            }
+        }
+        return n->parent;
+    }
+}
+
+NODE* BST::successor (NODE* R) {
+    NODE* n = R;
+    if (n == NULL) {
+        return NULL;
+    }
+    if (n->right != NULL) {
+        return min(n->left);
+    } else {
+        if (n->parent != NULL) {
+            while (n != (n->parent)->left) {
+                n = n->parent;
+                if (n->parent == NULL) {
+                    break;
+                }
+            }
+        }
+        return n->parent;
+    }
 }
 
 void BST::inorder (NODE* N) {
