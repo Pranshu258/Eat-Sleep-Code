@@ -107,7 +107,7 @@ NODE* BST::successor (NODE* R) {
         return NULL;
     }
     if (n->right != NULL) {
-        return min(n->left);
+        return min(n->right);
     } else {
         if (n->parent != NULL) {
             while (n != (n->parent)->left) {
