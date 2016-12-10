@@ -21,10 +21,16 @@ void bsttest() {
     if (node != NULL) {
         cout << "10 found at " << node << endl;
         NODE* n = T.predecessor(node);
+        NODE* m = T.successor(node);
         if (n != NULL) {
             cout << "Pred: " << n->value << endl;
         } else {
             cout << "No predecessor" << endl;
+        }
+        if (m != NULL) {
+            cout << "Succ: " << m->value << endl;
+        } else {
+            cout << "No successor" << endl;
         }
     }
     else
